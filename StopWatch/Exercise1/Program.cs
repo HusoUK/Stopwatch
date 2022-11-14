@@ -7,6 +7,5 @@ internal class Program
         var stopWatch = new StopWatch();
 
         stopWatch.Start();
-
     }
 }

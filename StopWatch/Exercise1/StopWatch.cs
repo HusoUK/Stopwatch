@@ -14,13 +14,11 @@ namespace Exercise1
         private TimeSpan _duration;
         private bool _hasAlreadyStarted = false;
 
-        public DateTime StartTime { get => _startTime; set => _startTime = value; }
-        public DateTime EndTime { get => _endTime; set => _endTime = value; }
         public double Duration
         {
             get
             {
-                var timeSpan = _endTime - StartTime;
+                var timeSpan = _endTime - _startTime;
                 double result = timeSpan.TotalSeconds;
                 return result;
             }
@@ -34,8 +32,8 @@ namespace Exercise1
             {
                 throw new InvalidOperationException("the stop watch has already been started");
             }
-            _startTime= DateTime.Now;
-            _hasAlreadyStarted= true;
+            _startTime = DateTime.Now;
+            _hasAlreadyStarted = true;
             Stop();
         }
 
@@ -44,7 +42,7 @@ namespace Exercise1
             Console.WriteLine("Please press enter to stop the stopwatch:");
             Console.ReadLine();
             _endTime = DateTime.Now;
-            _hasAlreadyStarted= false;
+            _hasAlreadyStarted = false;
             Console.WriteLine($"The time this stop watch took was {Duration} seconds.");
             Repeat();
         }
