@@ -7,22 +7,12 @@ using System.Threading.Tasks;
 
 namespace Exercise1
 {
-    internal class StopWatch
+    public class StopWatch
     {
         private DateTime _startTime;
         private DateTime _endTime;
-        private TimeSpan _duration;
+        private TimeSpan _duration => _endTime - _startTime;
         private bool _hasAlreadyStarted = false;
-
-        public double Duration
-        {
-            get
-            {
-                var timeSpan = _endTime - _startTime;
-                double result = timeSpan.TotalSeconds;
-                return result;
-            }
-        }
 
         public void Start()
         {
@@ -43,7 +33,7 @@ namespace Exercise1
             Console.ReadLine();
             _endTime = DateTime.Now;
             _hasAlreadyStarted = false;
-            Console.WriteLine($"The time this stop watch took was {Duration} seconds.");
+            Console.WriteLine($"The time this stop watch took was {_duration} seconds.");
             Repeat();
         }
 
